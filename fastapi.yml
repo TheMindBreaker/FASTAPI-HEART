@@ -14,11 +14,11 @@ spec:
         app: heartmodel-server
     spec:
       containers:
-      - name: heartmodel-container
-        #image: gcr.io/tensorflow-serving/resnet 
-        image: docker.io/a01229632/heart-model:v1
-        ports:
-        - containerPort: 80
+        - name: heartmodel-container
+          #image: gcr.io/tensorflow-serving/resnet
+          image: docker.io/a01229632/heart-model:v1
+          ports:
+            - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
@@ -28,8 +28,8 @@ metadata:
   name: heartmodel-service
 spec:
   ports:
-  - port: 80
-    targetPort: 80
+    - port: 80
+      targetPort: 80
   selector:
     app: heartmodel-server
   type: LoadBalancer
